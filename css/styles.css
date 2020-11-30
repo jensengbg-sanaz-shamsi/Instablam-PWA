@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: larger;
+}
+
+.btn-small {
+    position: relative;
+    bottom: 15px;
+}
+
+.deletePic{
+    grid-area: delete;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.downloadPic {
+    position: absolute;
+    right: 0;
+    bottom: 65px;
+}
+
+.red {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.col > .card {
+    width: 280px;
+    height: 300px;
+    margin: 10px auto;
+} 
+
+.col > .card > .card-image > img {
+    width: 280px;
+    height: 200px;
+}
+
+#video {
+    padding-top: 40px;
+}
+
+#btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin-top: 30px;
+}
+
+.btn-large {
+    margin-top: 15px;
+    width: 200px;
+    height: 55px;
+}
+
+.camera {
+    width: 100vw;
+    max-height: 100vh;
+}
+
+#newPicCard {
+    width: 350px;
+    height: 380px;
+    margin: 30px auto;
+}
+
+#newPic {
+    width: 350px;
+    height: 350px;
+}
+
+#question {
+    position: relative;
+    bottom: 140px;
+}

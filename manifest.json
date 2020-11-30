@@ -1,0 +1,21 @@
+{
+    "name": "Food Ninja",
+    "short_name": "FoodNinja",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#FFE9D2",
+    "theme_color": "#FFE1C4",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/imgs/192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/imgs/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
