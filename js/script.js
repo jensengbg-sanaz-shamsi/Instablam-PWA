@@ -127,12 +127,7 @@ function cameraSetting() {
                 </div>
             `
             newPic.src = '';
-            questionSection.classList.add('hidden');
             newPicSection.classList.add('hidden');
-
-            if ('geolocation' in navigator) {
-                findLocation();
-            }
 
             //for Deleting Pictures
             const deleteBtns = document.querySelectorAll('.deletePic');
@@ -174,7 +169,8 @@ function cameraSetting() {
         noBtn.addEventListener('click', () => {
             newPic.src = '';
             questionSection.classList.add('hidden');
-        })
+            newPicSection.classList.add('hidden');
+        });
         questionSection.classList.remove('hidden');
     })
 
@@ -182,6 +178,10 @@ function cameraSetting() {
     backBtn.addEventListener('click', () => {
         gallerySection.classList.remove('hidden');
         cameraPage.classList.add('hidden');
+
+        if ('geolocation' in navigator) {
+            findLocation();
+        }
 
     })
 }
