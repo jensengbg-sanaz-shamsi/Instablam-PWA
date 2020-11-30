@@ -106,6 +106,7 @@ function cameraSetting() {
         const questionSection = document.getElementById('question');
         const images = document.querySelector('.row');
 
+        //save Image in Gallery
         yesBtn.addEventListener('click', () => {
             images.innerHTML += `
                 <div class="col s12 l4">
@@ -170,7 +171,8 @@ function cameraSetting() {
             newPic.src = '';
             questionSection.classList.add('hidden');
             newPicSection.classList.add('hidden');
-        });
+        })
+
         questionSection.classList.remove('hidden');
     })
 
