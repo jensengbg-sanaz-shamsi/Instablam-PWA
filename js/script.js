@@ -15,8 +15,6 @@ const cameraOffBtn = document.getElementById('cameraOff');
 const photoBtn = document.getElementById('takePic');
 const newPic = document.querySelector('.pic');
 const backBtn = document.getElementById('backToGallery');
-const deleteBtns = document.querySelectorAll('.deletePic');
-const downloadBtns = document.querySelectorAll('.downloadPic');
 
 const errorMsg = document.querySelector('.error-message');
 
@@ -110,6 +108,7 @@ function cameraSetting() {
 
         //save Image in Gallery
         yesBtn.addEventListener('click', () => {
+            console.log('yes');
             images.innerHTML += `
                 <div class="col s12 l4">
                     <div class="card">
@@ -120,7 +119,7 @@ function cameraSetting() {
                             <p class="city">City: </p>
                             <p class="country">Country: </p>
                             <div class="deletePic">
-                            <i class="material-icons green-text text-lighten-1">delete_outline</i>
+                                <i class="material-icons green-text text-lighten-1">delete_outline</i>
                             </div>
                             <div class="downloadPic">
                                 <i class="material-icons blue-text">arrow_download</i>
@@ -133,14 +132,17 @@ function cameraSetting() {
             newPicSection.classList.add('hidden');
 
             //for Deleting Pictures
+            const deleteBtns = document.querySelectorAll('.deletePic');
             deleteBtns.forEach( deleteBtn => {
                 deleteBtn.addEventListener('click', () => {
+                    console.log('delete')
                     deleteBtn.parentElement.parentElement.remove();
                 })
             })
 
 
             //for downloading Pictures
+            const downloadBtns = document.querySelectorAll('.downloadPic');
             downloadBtns.forEach( downloadBtn => {
                 downloadBtn.addEventListener('click', () => {
                     console.log('hej');
@@ -168,8 +170,8 @@ function cameraSetting() {
 
         //Don´t want save Image in GALLERY
         noBtn.addEventListener('click', () => {
+            console.log('no')
             newPic.src = '';
-            questionSection.classList.add('hidden');
             newPicSection.classList.add('hidden');
         })
 
@@ -237,6 +239,7 @@ async function getAddressFromPosition(lat,lng) {
 }    
 
 //for Deleting Pictures
+const deleteBtns = document.querySelectorAll('.deletePic');
 deleteBtns.forEach( deleteBtn => {
     deleteBtn.addEventListener('click', () => {
         deleteBtn.parentElement.parentElement.remove();
