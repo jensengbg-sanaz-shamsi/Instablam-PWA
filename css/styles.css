@@ -6,6 +6,16 @@ body {
     box-sizing: border-box;
 }
 
+#first-page {
+    width: 50rem;
+    height: 40rem;
+}
+
+#firstPageImg {
+    width: 50rem;
+    height: 25rem;
+}
+
 .title {
     font-size: larger;
 }

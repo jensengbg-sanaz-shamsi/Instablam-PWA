@@ -10,6 +10,17 @@ const mainPage = document.getElementById('first-page');
 const cameraBtn = document.querySelector('.btn-floating');
 const cameraPage = document.querySelector('.camera');
 const newPicSection = document.querySelector('.new-pic');
+const cameraOnBtn = document.getElementById('cameraOn');
+const cameraOffBtn = document.getElementById('cameraOff');
+const photoBtn = document.getElementById('takePic');
+const newPic = document.querySelector('.pic');
+const backBtn = document.getElementById('backToGallery');
+const deleteBtns = document.querySelectorAll('.deletePic');
+const downloadBtns = document.querySelectorAll('.downloadPic');
+
+const errorMsg = document.querySelector('.error-message');
+
+const video = document.querySelector('video');
 
 
 
@@ -33,15 +44,6 @@ window.addEventListener('load', () => {
 })
 
 function cameraSetting() {
-    const cameraOnBtn = document.getElementById('cameraOn');
-    const cameraOffBtn = document.getElementById('cameraOff');
-    const photoBtn = document.getElementById('takePic');
-    const newPic = document.querySelector('.pic');
-    const backBtn = document.getElementById('backToGallery');
-
-    const errorMsg = document.querySelector('.error-message');
-
-    const video = document.querySelector('video');
 
     let stream;
 
@@ -131,7 +133,6 @@ function cameraSetting() {
             newPicSection.classList.add('hidden');
 
             //for Deleting Pictures
-            const deleteBtns = document.querySelectorAll('.deletePic');
             deleteBtns.forEach( deleteBtn => {
                 deleteBtn.addEventListener('click', () => {
                     deleteBtn.parentElement.parentElement.remove();
@@ -140,7 +141,6 @@ function cameraSetting() {
 
 
             //for downloading Pictures
-            const downloadBtns = document.querySelectorAll('.downloadPic');
             downloadBtns.forEach( downloadBtn => {
                 downloadBtn.addEventListener('click', () => {
                     console.log('hej');
@@ -237,10 +237,32 @@ async function getAddressFromPosition(lat,lng) {
 }    
 
 //for Deleting Pictures
-const deleteBtns = document.querySelectorAll('.deletePic');
 deleteBtns.forEach( deleteBtn => {
     deleteBtn.addEventListener('click', () => {
         deleteBtn.parentElement.parentElement.remove();
+    })
+})
+
+//for downloading Pictures
+const downloadBtns = document.querySelectorAll('.downloadPic');
+downloadBtns.forEach( downloadBtn => {
+    downloadBtn.addEventListener('click', () => {
+        console.log('hej');
+        let pictures = document.querySelectorAll('.col > .card > .card-image > img');
+                
+        pictures.forEach( picture => {
+            console.log(picture);
+            let imgPath = picture.getAttribute('src');
+            console.log(imgPath);
+            let fileName = getFileName(imgPath);
+            console.log(fileName)
+
+            saveAs(imgPath, fileName);
+        })
+
+        function getFileName(str) {
+            return str.substring(str.lastIndexOf('/') + 1)
+        }
     })
 })
 
