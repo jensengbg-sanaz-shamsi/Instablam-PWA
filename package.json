@@ -4,6 +4,7 @@
   "description": "a gallery that you can download and delete images,also can take new image",
   "main": "sw.js",
   "scripts": {
+    "deploy": "surge . --domain https://gorgeous-knot.surge.sh.sanaz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
