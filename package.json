@@ -1,0 +1,19 @@
+{
+  "name": "instablam",
+  "version": "1.0.0",
+  "description": "a gallery that you can download and delete images,also can take new image",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jensengbg-sanaz-shamsi/Instablam-PWA.git"
+  },
+  "author": "Sanaz Shamsi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jensengbg-sanaz-shamsi/Instablam-PWA/issues"
+  },
+  "homepage": "https://github.com/jensengbg-sanaz-shamsi/Instablam-PWA#readme"
+}
