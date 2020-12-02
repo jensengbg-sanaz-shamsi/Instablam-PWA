@@ -105,7 +105,7 @@ function cameraSetting() {
         const noBtn = document.getElementById('no');
         const questionSection = document.getElementById('question');
         const images = document.querySelector('.row');
-
+        
         //save Image in Gallery
         yesBtn.addEventListener('click', () => {
             console.log('yes');
@@ -118,53 +118,43 @@ function cameraSetting() {
                         <div class="card-content">
                             <p class="city">City: </p>
                             <p class="country">Country: </p>
-                            <div class="deletePic">
+                            <div class="deletePic" id="newImgDeleteBtn">
                                 <i class="material-icons green-text text-lighten-1">delete_outline</i>
                             </div>
-                            <div class="downloadPic">
+                            <div class="downloadPic" id="newImgDownloadBtn">
                                 <i class="material-icons blue-text">arrow_download</i>
                             </div>
                         </div>
                     </div>
                 </div>
-            `
+                `
             newPic.src = '';
             newPicSection.classList.add('hidden');
 
             //for Deleting Pictures
-            const deleteBtns = document.querySelectorAll('.deletePic');
-            deleteBtns.forEach( deleteBtn => {
-                deleteBtn.addEventListener('click', () => {
-                    console.log('delete')
-                    deleteBtn.parentElement.parentElement.remove();
-                })
+            const newImgDeleteBtn = document.getElementById('newImgDeleteBtn');
+            newImgDeleteBtn.addEventListener('click', () => {
+                newImgDeleteBtn.parentElement.parentElement.remove();
             })
 
+            deleting();
+            downloadingImages();
 
             //for downloading Pictures
-            const downloadBtns = document.querySelectorAll('.downloadPic');
-            downloadBtns.forEach( downloadBtn => {
-                downloadBtn.addEventListener('click', () => {
-                    console.log('hej');
-                    let pictures = document.querySelectorAll('.col > .card > .card-image > img');
-                
-                    pictures.forEach( picture => {
-                        console.log(picture);
-                        let imgPath = picture.getAttribute('src');
-                        console.log(imgPath);
-                        let fileName = getFileName(imgPath);
-                        console.log(fileName)
-
-
-                        saveAs(imgPath, fileName);
-                    })
-
-                    function getFileName(str) {
-                        return str.substring(str.lastIndexOf('/') + 1)
-                    }
-                })
+            const newImgDownloadBtn = document.getElementById('newImgDownloadBtn');
+            newImgDownloadBtn.addEventListener('click', () => {
+                console.log('here')
+                let image = imgUrl;
+                let fileName = getFileName(image);
+        
+                saveAs(image, fileName);    
             })
         })
+
+        
+        function getFileName(str) {
+            return str.substring(str.lastIndexOf('/') + 1)
+        }
 
         questionSection.classList.remove('hidden');
 
@@ -239,36 +229,37 @@ async function getAddressFromPosition(lat,lng) {
 }    
 
 //for Deleting Pictures
-const deleteBtns = document.querySelectorAll('.deletePic');
-deleteBtns.forEach( deleteBtn => {
-    deleteBtn.addEventListener('click', () => {
-        deleteBtn.parentElement.parentElement.remove();
+function deleting() {
+    const deleteBtns = document.querySelectorAll('.deletePic');
+    deleteBtns.forEach( deleteBtn => {
+        deleteBtn.addEventListener('click', () => {
+            deleteBtn.parentElement.parentElement.remove();
+        })
     })
-})
+}
+
 
 //for downloading Pictures
-const downloadBtns = document.querySelectorAll('.downloadPic');
-downloadBtns.forEach( downloadBtn => {
-    downloadBtn.addEventListener('click', () => {
-        console.log('hej');
-        let pictures = document.querySelectorAll('.col > .card > .card-image > img');
-                
-        pictures.forEach( picture => {
-            console.log(picture);
-            let imgPath = picture.getAttribute('src');
-            console.log(imgPath);
-            let fileName = getFileName(imgPath);
-            console.log(fileName)
+function downloadingImages() {
+    const downloadBtns = document.querySelectorAll('.downloadPic');
+    downloadBtns.forEach( downloadBtn => {
+        downloadBtn.addEventListener('click', () => {
 
-            saveAs(imgPath, fileName);
+            let image = downloadBtn.parentElement.parentElement.
+            getElementsByClassName('card-image')[0].getElementsByTagName('img')[0].src;
+            console.log(image)
+            let fileName = getFileName(image);
+        
+            saveAs(image, fileName);    
         })
-
-        function getFileName(str) {
-            return str.substring(str.lastIndexOf('/') + 1)
-        }
     })
-})
+}
+
+function getFileName(str) {
+    return str.substring(str.lastIndexOf('/') + 1)
+}
 
 
-
+deleting();
+downloadingImages();
 
