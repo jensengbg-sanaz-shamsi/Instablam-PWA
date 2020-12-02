@@ -134,7 +134,7 @@ function cameraSetting() {
             //for Deleting Pictures
             const newImgDeleteBtn = document.getElementById('newImgDeleteBtn');
             newImgDeleteBtn.addEventListener('click', () => {
-                newImgDeleteBtn.parentElement.parentElement.remove();
+                newImgDeleteBtn.parentElement.parentElement.parentElement.remove();
             })
 
             deleting();
@@ -233,7 +233,7 @@ function deleting() {
     const deleteBtns = document.querySelectorAll('.deletePic');
     deleteBtns.forEach( deleteBtn => {
         deleteBtn.addEventListener('click', () => {
-            deleteBtn.parentElement.parentElement.remove();
+            deleteBtn.parentElement.parentElement.parentElement.remove();
         })
     })
 }
