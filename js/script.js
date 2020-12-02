@@ -20,6 +20,11 @@ const errorMsg = document.querySelector('.error-message');
 
 const video = document.querySelector('video');
 
+const yesBtn = document.getElementById('yes');
+const noBtn = document.getElementById('no');
+const questionSection = document.getElementById('question');
+const images = document.querySelector('.row');
+
 
 
 window.addEventListener('load', () => {
@@ -33,7 +38,7 @@ window.addEventListener('load', () => {
         gallerySection.classList.add('hidden');
         mainPage.classList.add('hidden');
         cameraPage.classList.remove('hidden');
-    })
+    })  
 
     if('mediaDevices' in navigator) {
         cameraSetting();
@@ -101,14 +106,34 @@ function cameraSetting() {
         newPic.src = imgUrl;
         newPicSection.classList.remove('hidden');
 
-        const yesBtn = document.getElementById('yes');
-        const noBtn = document.getElementById('no');
-        const questionSection = document.getElementById('question');
-        const images = document.querySelector('.row');
+        
         
         //save Image in Gallery
         yesBtn.addEventListener('click', () => {
-            console.log('yes');
+
+            //notification
+            let notificationPermission = true;
+            console.log(notificationPermission);
+            if(notificationPermission){
+                const options = {
+                    body: "The new picture successfully added to the gallery!",
+                    icon: '../imgs/add-image.png'
+                }
+                console.log(options)
+                    
+                let notif = new Notification('New image status', options);
+                console.log(notif)
+            
+                
+                notif.addEventListener('show', () => {
+                    console.log('Showing notification');
+                })
+                notif.addEventListener('click', () => {
+                    console.log('User clicked on notification');
+                })
+            
+            }
+
             images.innerHTML += `
                 <div class="col s12 l4">
                     <div class="card">
@@ -128,6 +153,7 @@ function cameraSetting() {
                     </div>
                 </div>
                 `
+            
             newPic.src = '';
             newPicSection.classList.add('hidden');
 
@@ -135,15 +161,34 @@ function cameraSetting() {
             deleting(deleteBtn)
             const downloadBtn = document.getElementById('newImgDownloadBtn');
             downloadingImages(downloadBtn)
-
-            //notification
-
         })
 
         questionSection.classList.remove('hidden');
 
         //Don´t want save Image in GALLERY
         noBtn.addEventListener('click', () => {
+            //notification
+            let notificationPermission = true;
+            console.log(notificationPermission);
+            if(notificationPermission){
+                const options = {
+                    body: "The new picture deleted!",
+                    icon: '../imgs/remove-image.png'
+                }
+                console.log(options)
+                    
+                let notif = new Notification('New image status', options);
+                console.log(notif)
+            
+                
+                notif.addEventListener('show', () => {
+                    console.log('Showing notification');
+                })
+                notif.addEventListener('click', () => {
+                    console.log('User clicked on notification');
+                })
+            
+            }
             console.log('no')
             newPic.src = '';
             newPicSection.classList.add('hidden');
@@ -223,7 +268,6 @@ function deleting() {
         })
     })
 }
-
 
 //for downloading Pictures
 function downloadingImages() {
