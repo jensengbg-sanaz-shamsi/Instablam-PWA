@@ -131,30 +131,14 @@ function cameraSetting() {
             newPic.src = '';
             newPicSection.classList.add('hidden');
 
-            //for Deleting Pictures
-            const newImgDeleteBtn = document.getElementById('newImgDeleteBtn');
-            newImgDeleteBtn.addEventListener('click', () => {
-                newImgDeleteBtn.parentElement.parentElement.parentElement.remove();
-            })
+            const deleteBtn = document.getElementById('newImgDeleteBtn');
+            deleting(deleteBtn)
+            const downloadBtn = document.getElementById('newImgDownloadBtn');
+            downloadingImages(downloadBtn)
 
-            deleting();
-            downloadingImages();
+            //notification
 
-            //for downloading Pictures
-            const newImgDownloadBtn = document.getElementById('newImgDownloadBtn');
-            newImgDownloadBtn.addEventListener('click', () => {
-                console.log('here')
-                let image = imgUrl;
-                let fileName = getFileName(image);
-        
-                saveAs(image, fileName);    
-            })
         })
-
-        
-        function getFileName(str) {
-            return str.substring(str.lastIndexOf('/') + 1)
-        }
 
         questionSection.classList.remove('hidden');
 
@@ -180,6 +164,7 @@ function cameraSetting() {
     })
 }
 
+//finding location ...
 function findLocation() {
 
     if('geolocation' in navigator) {
@@ -227,6 +212,7 @@ async function getAddressFromPosition(lat,lng) {
     }
 
 }    
+
 
 //for Deleting Pictures
 function deleting() {
