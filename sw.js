@@ -1,4 +1,4 @@
-const staticCacheName = 'site-staticV8-1';
+const staticCacheName = 'site-staticV8-44446678998687500125';
 const assets = [
     '/',
     '/index.html',
@@ -14,7 +14,8 @@ const assets = [
     '/imgs/huskey.jpg',
     '/imgs/pakotah.jpg',
     '/imgs/samoyed.jpg',
-    'https://fonts.googleapis.com/icon?family=Material+Icons'
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
+    '/fallback.html'
 ];
 
 // install service worker
@@ -44,6 +45,6 @@ self.addEventListener('fetch', evt => {
     evt.respondWith(
         caches.match(evt.request).then(cacheRes => {
             return cacheRes || fetch(evt.request);
-        })
+        }).catch(() => caches.match('/fallback.html'))
     );
 });

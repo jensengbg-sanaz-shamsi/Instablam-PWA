@@ -10,9 +10,15 @@ body {
     font-size: larger;
 }
 
-.btn-small {
-    position: relative;
-    bottom: 15px;
+#first-page {
+    width: 40rem;
+    height: 38rem;
+    margin: 30px auto;
+}
+
+.right {
+    position: absolute;
+    bottom: 10px;
 }
 
 .deletePic{

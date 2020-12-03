@@ -12,6 +12,7 @@ const cameraPage = document.querySelector('.camera');
 const newPicSection = document.querySelector('.new-pic');
 const cameraOnBtn = document.getElementById('cameraOn');
 const cameraOffBtn = document.getElementById('cameraOff');
+const switchCamera = document.getElementById('switchCamera');
 const photoBtn = document.getElementById('takePic');
 const newPic = document.querySelector('.pic');
 const backBtn = document.getElementById('backToGallery');
@@ -49,6 +50,7 @@ window.addEventListener('load', () => {
 function cameraSetting() {
 
     let stream;
+    let facingMode = 'environment';
 
     //camera button ON
     cameraOnBtn.addEventListener('click', async () => {
@@ -64,6 +66,7 @@ function cameraSetting() {
 
             photoBtn.classList.remove('hidden');
             cameraOffBtn.classList.remove('hidden');
+            switchCamera.classList.remove('hidden');
             cameraOnBtn.classList.add('hidden');
         }
         catch(e) {
@@ -86,6 +89,17 @@ function cameraSetting() {
         cameraOnBtn.classList.remove('hidden');
         cameraOffBtn.classList.add('hidden');
     })
+
+    //switch camera
+    switchCamera.addEventListener('click', () => {
+        if (facingMode == 'environment') {
+            facingMode = 'user';
+        } else {
+            facingMode = 'environment';
+        }
+        cameraOffBtn.click();
+        cameraOnBtn.click();
+    });
 
     //take a PICTURE
     photoBtn.addEventListener('click', async () => {
@@ -110,14 +124,15 @@ function cameraSetting() {
         
         //save Image in Gallery
         yesBtn.addEventListener('click', () => {
-
+            
+            
             //notification
             let notificationPermission = true;
             console.log(notificationPermission);
             if(notificationPermission){
                 const options = {
                     body: "The new picture successfully added to the gallery!",
-                    icon: '../imgs/add-image.png'
+                    icon: imgUrl
                 }
                 console.log(options)
                     
@@ -165,6 +180,7 @@ function cameraSetting() {
 
         questionSection.classList.remove('hidden');
 
+
         //Don´t want save Image in GALLERY
         noBtn.addEventListener('click', () => {
             //notification
@@ -173,7 +189,7 @@ function cameraSetting() {
             if(notificationPermission){
                 const options = {
                     body: "The new picture deleted!",
-                    icon: '../imgs/remove-image.png'
+                    icon: imgUrl
                 }
                 console.log(options)
                     
