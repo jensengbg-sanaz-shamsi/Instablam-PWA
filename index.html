@@ -114,6 +114,18 @@
     </section>
 
     <section class="camera hidden">
+
+        <p class="error-message"></p>
+        <div id="btns">
+            <button class="btn-large pink" id="cameraOn">Camera On</button>
+            <button class="btn-large pink hidden" id="cameraOff">Camera Off</button>
+            <button class="btn-large pink lighten-2"  id="backToGallery">Back To Gallery</button>
+        </div>
+
+        <div class="center" id="video">
+            <video src="" autoplay poster="" class="video" controls></video>
+        </div>
+
         <section class="card center new-pic hidden" id="newPicCard" >
             <div class="card-image" id="newPic">
                 <img src="" alt="new pic" class="pic">
@@ -125,18 +137,9 @@
             </div>
         </section>
 
-        <p class="error-message"></p>
-
-        <div class="center" id="video">
-            <video src="" autoplay poster="" class="video" controls></video>
-        </div>
-
-        <div id="btns">
-            <button class="btn-large pink" id="cameraOn">Camera On</button>
-            <button class="btn-large pink hidden" id="cameraOff">Camera Off</button>
+        <div id="btns2">
             <button class="btn-large pink hidden" id="takePic">Take a photo</button>
-            <button class="btn-large pink hidden" id="switchCamera">Switch camera</button>
-            <button class="btn-large pink lighten-2"  id="backToGallery">Back To Gallery</button>
+            <button class="btn-large pink hidden" id="switch-Camera">Switch camera</button>
         </div>
     </section>
 

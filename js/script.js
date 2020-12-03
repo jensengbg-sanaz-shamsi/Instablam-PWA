@@ -12,7 +12,7 @@ const cameraPage = document.querySelector('.camera');
 const newPicSection = document.querySelector('.new-pic');
 const cameraOnBtn = document.getElementById('cameraOn');
 const cameraOffBtn = document.getElementById('cameraOff');
-const switchCamera = document.getElementById('switchCamera');
+const switchCamera = document.getElementById('switch-Camera');
 const photoBtn = document.getElementById('takePic');
 const newPic = document.querySelector('.pic');
 const backBtn = document.getElementById('backToGallery');
@@ -59,7 +59,7 @@ function cameraSetting() {
         try {
             const md = navigator.mediaDevices;
             stream = await md.getUserMedia({
-                video: { width: 320, height:320 }
+                video: { width: 320, height:320,facingMode: facingMode }
             })
 
             video.srcObject = stream;

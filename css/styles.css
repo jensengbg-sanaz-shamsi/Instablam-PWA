@@ -64,11 +64,19 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0px;
-    margin-top: 30px;
+    margin-right: 10px;
 }
 
+#btns2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .btn-large {
-    margin-top: 15px;
+    margin: 15px 10px 0px 0px;
     width: 200px;
     height: 55px;
 }
