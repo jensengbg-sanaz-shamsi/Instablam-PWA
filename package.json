@@ -4,7 +4,7 @@
   "description": "a gallery that you can download and delete images,also can take new image",
   "main": "sw.js",
   "scripts": {
-    "deploy": "surge . --domain https://gorgeous-knot.surge.sh.sanaz",
+    "deploy": "surge . --domain https://auspicious-shirt.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jensengbg-sanaz-shamsi/Instablam-PWA/issues"
   },
-  "homepage": "https://github.com/jensengbg-sanaz-shamsi/Instablam-PWA#readme"
+  "homepage": "https://github.com/jensengbg-sanaz-shamsi/Instablam-PWA#readme",
+  "devDependencies": {
+    "surge": "^0.21.7"
+  }
 }
