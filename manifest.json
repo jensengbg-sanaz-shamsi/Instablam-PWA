@@ -1,6 +1,6 @@
 {
-    "name": "Food Ninja",
-    "short_name": "FoodNinja",
+    "name": "Mini Insta",
+    "short_name": "MiniInsta",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#fce4ec",
