@@ -4,7 +4,7 @@
   "description": "a gallery that you can download and delete images,also can take new image",
   "main": "sw.js",
   "scripts": {
-    "deploy": "surge . --domain https://auspicious-shirt.surge.sh",
+    "deploy": "surge . --domain https://curly-girls.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
