@@ -47,6 +47,58 @@ window.addEventListener('load', () => {
 
 })
 
+async function addNotification(image) {
+    let notificationPermission = false;
+    const answer = await Notification.requestPermission();
+    
+    if (answer == 'granted') {
+        notificationPermission = true;
+    } else if (answer == 'denied') {
+        console.log('Notificaton: User denied notification');
+    } else {
+        console.log('Notification: user declined to answer');
+    }
+
+    if (!notificationPermission) {
+        errorMsg.innerHTML = 'We do not have permission to show notification';
+        return;
+    }
+
+    const options = {
+        body: "The new picture successfully added to the gallery! ",
+        icon: image
+    }
+
+    navigator.serviceWorker.ready.then(reg => 
+        reg.showNotification('Image', options));
+}
+
+async function deleteNotification(image) {
+    let notificationPermission = false;
+    const answer = await Notification.requestPermission();
+    
+    if (answer == 'granted') {
+        notificationPermission = true;
+    } else if (answer == 'denied') {
+        console.log('Notificaton: User denied notification');
+    } else {
+        console.log('Notification: user declined to answer');
+    }
+
+    if (!notificationPermission) {
+        errorMsg.innerHTML = 'We do not have permission to show notification';
+        return;
+    }
+
+    const options = {
+        body: "The new picture deleted!",
+        icon: image
+    }
+
+    navigator.serviceWorker.ready.then(reg => 
+        reg.showNotification('Image', options));
+}
+
 function cameraSetting() {
 
     let stream;
@@ -125,30 +177,9 @@ function cameraSetting() {
         //save Image in Gallery
         yesBtn.addEventListener('click', () => {
             
-            
-            //notification
-            let notificationPermission = true;
-            console.log(notificationPermission);
-            if(notificationPermission){
-                const options = {
-                    body: "The new picture successfully added to the gallery!",
-                    icon: imgUrl
-                }
-                console.log(options)
-                    
-                let notif = new Notification('New image status', options);
-                console.log(notif)
-            
-                
-                notif.addEventListener('show', () => {
-                    console.log('Showing notification');
-                })
-                notif.addEventListener('click', () => {
-                    console.log('User clicked on notification');
-                })
-            
-            }
+            addNotification(imgUrl);
 
+            // add newcard in html
             images.innerHTML += `
                 <div class="col s12 l4">
                     <div class="card">
@@ -183,28 +214,8 @@ function cameraSetting() {
 
         //Don´t want save Image in GALLERY
         noBtn.addEventListener('click', () => {
-            //notification
-            let notificationPermission = true;
-            console.log(notificationPermission);
-            if(notificationPermission){
-                const options = {
-                    body: "The new picture deleted!",
-                    icon: imgUrl
-                }
-                console.log(options)
-                    
-                let notif = new Notification('New image status', options);
-                console.log(notif)
-            
-                
-                notif.addEventListener('show', () => {
-                    console.log('Showing notification');
-                })
-                notif.addEventListener('click', () => {
-                    console.log('User clicked on notification');
-                })
-            
-            }
+
+            deleteNotification(imgUrl);
             console.log('no')
             newPic.src = '';
             newPicSection.classList.add('hidden');
