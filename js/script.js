@@ -16,6 +16,7 @@ const switchCamera = document.getElementById('switch-Camera');
 const photoBtn = document.getElementById('takePic');
 const newPic = document.querySelector('.pic');
 const backBtn = document.getElementById('backToGallery');
+const cameraSection = document.querySelector('.camera-section')
 
 const errorMsg = document.querySelector('.error-message');
 
@@ -38,7 +39,9 @@ window.addEventListener('load', () => {
     cameraBtn.addEventListener('click', () => {
         gallerySection.classList.add('hidden');
         mainPage.classList.add('hidden');
-        cameraPage.classList.remove('hidden');
+        cameraSection.classList.remove('hidden');
+        switchCamera.classList.remove('hidden');
+        photoBtn.classList.remove('hidden');
     })  
 
     if('mediaDevices' in navigator) {
@@ -47,23 +50,20 @@ window.addEventListener('load', () => {
 
 })
 
-async function addNotification(image) {
+async function notification() {
     let notificationPermission = false;
     const answer = await Notification.requestPermission();
     
     if (answer == 'granted') {
         notificationPermission = true;
     } else if (answer == 'denied') {
-        console.log('Notificaton: User denied notification');
+        errorMsg.innerHTML = 'We don´t have your permission for notification.'
     } else {
-        console.log('Notification: user declined to answer');
+        errorMsg.innerHTML = 'Notification: user declined to answer.'
     }
+}
 
-    if (!notificationPermission) {
-        errorMsg.innerHTML = 'We do not have permission to show notification';
-        return;
-    }
-
+function addNotification(image){
     const options = {
         body: "The new picture successfully added to the gallery! ",
         icon: image
@@ -73,22 +73,8 @@ async function addNotification(image) {
         reg.showNotification('Image', options));
 }
 
-async function deleteNotification(image) {
-    let notificationPermission = false;
-    const answer = await Notification.requestPermission();
-    
-    if (answer == 'granted') {
-        notificationPermission = true;
-    } else if (answer == 'denied') {
-        console.log('Notificaton: User denied notification');
-    } else {
-        console.log('Notification: user declined to answer');
-    }
 
-    if (!notificationPermission) {
-        errorMsg.innerHTML = 'We do not have permission to show notification';
-        return;
-    }
+function deleteNotification(image) {
 
     const options = {
         body: "The new picture deleted!",
@@ -170,7 +156,10 @@ function cameraSetting() {
 
         let imgUrl = URL.createObjectURL(blob);
         newPic.src = imgUrl;
+        cameraSection.classList.add('hidden');
         newPicSection.classList.remove('hidden');
+        photoBtn.classList.add('hidden');
+        switchCamera.classList.add('hidden');
 
         
         
@@ -202,6 +191,9 @@ function cameraSetting() {
             
             newPic.src = '';
             newPicSection.classList.add('hidden');
+            cameraSection.classList.remove('hidden');
+            photoBtn.classList.remove('hidden');
+            switchCamera.classList.remove('hidden');
 
             const deleteBtn = document.getElementById('newImgDeleteBtn');
             deleting(deleteBtn)
@@ -219,6 +211,9 @@ function cameraSetting() {
             console.log('no')
             newPic.src = '';
             newPicSection.classList.add('hidden');
+            cameraSection.classList.remove('hidden');
+            photoBtn.classList.remove('hidden');
+            switchCamera.classList.remove('hidden');
         })
 
         questionSection.classList.remove('hidden');
@@ -227,13 +222,15 @@ function cameraSetting() {
 
     backBtn.addEventListener('click', () => {
         gallerySection.classList.remove('hidden');
-        cameraPage.classList.add('hidden');
+        cameraSection.classList.add('hidden');
+        switchCamera.classList.add('hidden');
+        photoBtn.classList.add('hidden');
 
         if ('geolocation' in navigator) {
             findLocation();
         }
-
     })
+
 }
 
 //finding location ...

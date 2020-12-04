@@ -17,7 +17,7 @@ body {
     margin: 30px auto;
 }
 
-.right {
+#right {
     position: absolute;
     bottom: 10px;
 }

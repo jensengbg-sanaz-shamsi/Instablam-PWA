@@ -1,5 +1,5 @@
 ## About Instablam
-Instablam is a progressiv web application. You can take pictures with your phone, tablet, computer with your location and able to save them in your gallery,Also you can download and remove pictures from your gallery.
+Instablam is a progressive web application. You can take pictures with your phone, tablet, computer include your location on it, and able to save them in your gallery.Also you can download and remove pictures from the gallery.
 
 ## Testing in different browsers
 |Browser      |Able to download |Geolocation |MediaDevices |Notification |Offline |

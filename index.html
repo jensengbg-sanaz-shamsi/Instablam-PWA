@@ -23,11 +23,10 @@
         </div>
         <div class="card-content">
             <span class="card-title pink-text text-lighten-1">Instablam</span>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque 
-                facilis vitae dolorum distinctio autem quibusdam tempora reiciendis,
-                odit, molestiae asperiores qui aspernatur eum officia non dignissimos
-                quis eligendi! Adipisci, reprehenderit.</p> <br>
-            <div class="right">
+            <p>Instablam is a progressive web application that you can take pictures with your phone,
+            tablet, computer include your location on it, and able to save them in your gallery.Also you can
+            download and remove pictures from the gallery.</p>
+            <div class="right" id="right">
                 <button  id="btn-s" class="btn-small pink lighten-1 white-text">Go to Gallery</button>
             </div>
         </div>
@@ -113,17 +112,18 @@
         
     </section>
 
-    <section class="camera hidden">
-
-        <p class="error-message"></p>
-        <div id="btns">
-            <button class="btn-large pink" id="cameraOn">Camera On</button>
-            <button class="btn-large pink hidden" id="cameraOff">Camera Off</button>
-            <button class="btn-large pink lighten-2"  id="backToGallery">Back To Gallery</button>
-        </div>
-
-        <div class="center" id="video">
-            <video src="" autoplay poster="" class="video" controls></video>
+    <section class="camera">
+        <div class="camera-section hidden">
+            <p class="error-message"></p>
+            <div id="btns">
+                <button class="btn-large pink" id="cameraOn">Camera On</button>
+                <button class="btn-large pink hidden" id="cameraOff">Camera Off</button>
+                <button class="btn-large pink lighten-2"  id="backToGallery">Back To Gallery</button>
+            </div>
+    
+            <div class="center" id="video">
+                <video src="" autoplay poster="" class="video" controls></video>
+            </div>
         </div>
 
         <section class="card center new-pic hidden" id="newPicCard" >
