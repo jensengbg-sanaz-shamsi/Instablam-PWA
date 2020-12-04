@@ -24,4 +24,4 @@ Instablam is a progressive web application. You can take pictures with your phon
 
 
 
-##### Created by: Sanaz Shamsi
+##### Created by: Sanaz Shamsi ,surge domain:  https://instablam-sanaz.surge.sh
